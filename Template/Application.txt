@@ -1,0 +1,17 @@
+﻿package {2}.{0};
+
+import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.web.servlet.ServletComponentScan;
+
+@SpringBootApplication
+@ServletComponentScan
+@MapperScan("{2}.{0}.mapper")
+public class {1}Application {{
+
+	public static void main(String[] args) {{
+		SpringApplication.run({1}Application.class, args);
+	}}
+
+}}

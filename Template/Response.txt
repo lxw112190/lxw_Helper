@@ -1,0 +1,105 @@
+﻿
+public class Response {
+
+    private Integer code;
+    private String msg;
+    private Object data;
+    private Long count = 0L;
+
+    public Response success(Object data, Long count) {
+        this.code = ResultCodeEnum.SUCCESS.getCode();
+        this.msg = ResultCodeEnum.SUCCESS.getMsg();
+        this.data = data;
+        this.count = count;
+        return this;
+    }
+
+    public Response success(Object data, String msg) {
+        this.code = ResultCodeEnum.SUCCESS.getCode();
+        this.msg = msg;
+        this.data = data;
+        this.count = count;
+        return this;
+    }
+
+    public Response success() {
+        this.code = ResultCodeEnum.SUCCESS.getCode();
+        this.msg = ResultCodeEnum.SUCCESS.getMsg();
+        this.count = 0L;
+        return this;
+    }
+
+    public Response success(Long count) {
+        this.code = ResultCodeEnum.SUCCESS.getCode();
+        this.msg = ResultCodeEnum.SUCCESS.getMsg();
+        this.count = count;
+        return this;
+    }
+
+    public Response success(Object data) {
+        this.code = ResultCodeEnum.SUCCESS.getCode();
+        this.msg = ResultCodeEnum.SUCCESS.getMsg();
+        this.data = data;
+        return this;
+    }
+
+    public Response error(String msg) {
+        this.code = ResultCodeEnum.Fail.getCode();
+        this.msg = msg;
+        return this;
+    }
+
+    public Response(ResultCodeEnum rCode) {
+        this.code = rCode.getCode();
+        this.msg = rCode.getMsg();
+    }
+
+    public Response() {
+    }
+
+    public Long getCount() {
+        return count;
+    }
+
+    public void setCount(Long count) {
+        this.count = count;
+    }
+
+    public Integer getCode() {
+        return code;
+    }
+
+    public void setCode(Integer code) {
+        this.code = code;
+    }
+
+    public String getMsg() {
+        return msg;
+    }
+
+    public void setMsg(String msg) {
+        this.msg = msg;
+    }
+
+    public Object getData() {
+        return data;
+    }
+
+    public void setData(Object data) {
+        this.data = data;
+    }
+
+    @Override
+    public String toString() {
+        return "{" +
+                "code=" + code +
+                ", msg='" + msg + '\'' +
+                ", data=" + data +
+                ", count=" + count +
+                '}';
+    }
+
+	public  String toJsonString(){
+        return "{" + "\"code\":\"" + code + "\", \"msg\":\"" + msg + "\"}";
+    }
+}

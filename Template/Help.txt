@@ -1,0 +1,185 @@
+﻿<!-- 添加oracle驱动依赖 -->
+<dependency>
+	<groupId>com.oracle</groupId>
+	<artifactId>ojdbc6</artifactId>
+	<version>11.1.0.7.0-Production</version>
+</dependency>
+
+<!--添加分页插件-->
+<dependency>
+	<groupId>com.github.pagehelper</groupId>
+	<artifactId>pagehelper-spring-boot-starter</artifactId>
+	<version>1.2.5</version>
+</dependency>
+
+<!--添加mybatis-->
+<dependency>
+	<groupId>org.mybatis.spring.boot</groupId>
+	<artifactId>mybatis-spring-boot-starter</artifactId>
+	<version>2.0.1</version>
+</dependency>
+
+<!--添加fastjson-->
+<dependency>
+    <groupId>com.alibaba</groupId>
+    <artifactId>fastjson</artifactId>
+    <version>1.2.57</version>
+</dependency>
+
+
+@MapperScan("com.stardon.demo.mapper")
+@ServletComponentScan
+
+
+导入驱动文件参考命令
+mvn install:install-file -Dfile=E:\ojdbc6-11.1.0.7.0-Production.jar -DgroupId=com.oracle -DartifactId=ojdbc6 -Dversion=11.1.0.7.0-Production -Dpackaging=jar
+
+文件位置
+./Template/ojdbc6-11.1.0.7.0-Production.jar
+
+-----mysql-------------------------------------------------------------
+
+<dependency>
+	<groupId>mysql</groupId>
+	<artifactId>mysql-connector-java</artifactId>
+	<version>8.0.11</version>
+</dependency>
+
+spring.datasource.driver-class-name= com.mysql.cj.jdbc.Driver
+spring.datasource.url = jdbc:mysql://127.0.0.1:3306/lw_main?useUnicode=true&characterEncoding=utf8&useSSL=false&autoReconnect=true&serverTimezone=UTC
+spring.datasource.username=root
+spring.datasource.password=123456
+spring.datasource.druid.initial-size=1
+spring.datasource.druid.min-idle=1
+spring.datasource.druid.max-active=20
+spring.datasource.druid.test-on-borrow=true
+spring.datasource.druid.stat-view-servlet.allow=true
+-----mysql-------------------------------------------------------------
+
+
+-----common-------------------------------------------------------------
+public static Date getCurrentTime() {
+    long currentTime = System.currentTimeMillis();
+    SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    Date date = new Date(currentTime);
+    return date;
+}
+
+public static boolean CheckMobilePhoneNum(String phoneNum) {
+    String regex = "^(1[3-9]\\d{9}$)";
+    if (phoneNum.length() == 11) {
+        Pattern p = Pattern.compile(regex);
+        Matcher m = p.matcher(phoneNum);
+        if (m.matches()) {
+            return true;
+        }
+    }
+    return false;
+}
+
+
+public static boolean CheckEmail(String email){
+    if (null==email || "".equals(email)){
+        return false;
+    }
+    String regEx1 = "^([a-z0-9A-Z]+[-|\\.]?)+[a-z0-9A-Z]@([a-z0-9A-Z]+(-[a-z0-9A-Z]+)?\\.)+[a-zA-Z]{2,}$";
+    Pattern p = Pattern.compile(regEx1);
+    Matcher m = p.matcher(email);
+    if(m.matches()){
+        return true;
+    }else{
+        return false;
+    }
+}
+
+public static Date stringToDate(String time) {
+    Date date = null;
+    try {
+        date = formatter.parse(time);
+    } catch (Exception e) {
+    }
+    return date;
+}
+-----common-------------------------------------------------------------
+
+
+
+-----Swagger-------------------------------------------------------------
+
+<dependency>
+	<groupId>io.springfox</groupId>
+	<artifactId>springfox-swagger2</artifactId>
+	<version>2.9.2</version>
+</dependency>
+<dependency>
+	<groupId>io.springfox</groupId>
+	<artifactId>springfox-swagger-ui</artifactId>
+	<version>2.9.2</version>
+</dependency>
+
+@Configuration
+@EnableSwagger2
+public class SwaggerConfig {
+    @Bean
+    public Docket createRestApi() {
+        return new Docket(DocumentationType.SWAGGER_2)
+                .pathMapping("/")
+                .select()
+                .apis(RequestHandlerSelectors.basePackage("com.mzty.lw_admin.controller"))
+                .paths(PathSelectors.any())
+                .build().apiInfo(new ApiInfoBuilder()
+                        .title("lw_admin后台接口")
+                        .description("lw_admin后台接口")
+                        .version("1.0")
+                        .build());
+    }
+}
+-----Swagger-------------------------------------------------------------
+
+-----jwt-------------------------------------------------------------
+<dependency>
+	<groupId>com.auth0</groupId>
+	<artifactId>java-jwt</artifactId>
+	<version>3.4.0</version>
+</dependency>
+
+
+public static final String TOKEN_SECRET = "lxw_2020";
+
+public static String getToken(SysUser user) {
+
+        String token = "";
+
+        //过期时间
+        Date date = new Date(System.currentTimeMillis() + EXPIRE_TIME);
+
+        token = JWT.create()
+                .withAudience(user.getUid())
+                .withExpiresAt(date)
+                .sign(Algorithm.HMAC256(TOKEN_SECRET));
+
+        return token;
+    }
+
+
+
+//代码段
+try {
+    userId = JWT.decode(token).getAudience().get(0);
+} catch (JWTDecodeException j) {
+    //ResponseUtil.writeJson(httpServletResponse, new Response().error("token无效").toJsonString());
+    return false;
+}
+
+//验证 token
+JWTVerifier jwtVerifier = JWT.require(Algorithm.HMAC256(common.TOKEN_SECRET)).build();
+try {
+    jwtVerifier.verify(token);
+} catch (JWTVerificationException e) {
+    //throw new RuntimeException("401");
+    //ResponseUtil.writeJson(httpServletResponse, new Response().error("token无效").toJsonString());
+    return false;
+}
+
+-----jwt-------------------------------------------------------------
+

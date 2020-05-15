@@ -1,0 +1,32 @@
+﻿spring.http.encoding.force=true
+spring.http.encoding.charset=UTF-8
+
+#server.port=9089
+#server.servlet.context-path=/testser
+
+sys.security.ser-key=
+
+#数据源配置
+spring.datasource.url=jdbc:oracle:thin:@{0}:{4}/{5}
+spring.datasource.username={1}
+spring.datasource.password={2}
+spring.datasource.driverClassName=oracle.jdbc.driver.OracleDriver
+
+sys.security.ser-key=test
+
+# 扫描mapper.xml文件
+mybatis.mapper-locations=classpath:mapper/*.xml
+# 扫描实体类
+mybatis.typeAliasesPackage={3}.pojo
+#logging.level.{3}.mapper = debug
+
+# 分页插件
+pagehelper:
+helper-dialect: oracle
+reasonable: true
+support-methods-arguments: true
+params: count=countSql
+
+# 格式化输出日期时间
+spring.jackson.date-format=yyyy-MM-dd HH:mm:ss
+spring.jackson.time-zone=GMT+8
