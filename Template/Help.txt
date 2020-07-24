@@ -1,4 +1,9 @@
-﻿<!-- 添加oracle驱动依赖 -->
+﻿
+使用说明：https://blog.csdn.net/lw112190/article/details/106143263
+欢迎点赞、评论、收藏！
+
+
+<!-- 添加oracle驱动依赖 -->
 <dependency>
 	<groupId>com.oracle</groupId>
 	<artifactId>ojdbc6</artifactId>
