@@ -4,6 +4,8 @@ spring.http.encoding.charset=UTF-8
 #server.port=8080
 #server.servlet.context-path=/testser
 
+sys.security.ser-key=test
+
 #数据源配置
 spring.datasource.url=jdbc:oracle:thin:@{0}:{4}/{5}
 spring.datasource.username={1}
