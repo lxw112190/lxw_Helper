@@ -1,4 +1,4 @@
-package com.example.mybatistest.comm;
+package ${PackageName}.comm;
 
 import org.springframework.core.annotation.Order;
 
