@@ -1,4 +1,6 @@
-﻿import com.alibaba.fastjson.JSONObject;
+﻿package ${PackageName}.comm;
+
+import com.alibaba.fastjson.JSONObject;
 import javax.servlet.http.HttpServletResponse;
 import java.io.PrintWriter;
 

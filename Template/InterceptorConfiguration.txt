@@ -1,4 +1,6 @@
-﻿import org.springframework.boot.SpringBootConfiguration;
+﻿package ${PackageName}.comm;
+
+import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import javax.annotation.Resource;

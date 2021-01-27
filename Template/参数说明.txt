@@ -1,0 +1,46 @@
+﻿${Author}	作者，例如：lxw，可在代码生成界面动态配置
+${Date}	时间，例如：2021-01-26
+
+${GroupId}	GroupId
+${ArtifactId}	ArtifactId
+
+${IP} 数据库IP，例如：127.0.0.1
+${Port} 数据库端口，例如：3306 或者 1521
+${UserName} 数据库用户名，例如：root
+${Password} 数据库密码，例如：lxw123456
+${DataBase} 数据库或者实例名，例如：lxw
+
+${PackageName} 包名，例如：com.lxw.lxwDemo，可在代码生成界面动态配置
+
+${PrivateFields} 私有字段
+${PublicAttributes} 公有属性
+
+${TableName}	表名称，例如：tb_test
+${TableName_Pascal}	表名称,Pascal风格，例如：TbTest
+${TableName_Pascal_FirstLetterToLower}	表名称Pascal风格首字母小写，例如：tbTest
+
+${TableComment}	表注释，例如：测试表
+
+${PKColumnName}	主键字段,例如：ID，暂时不支持联合主键
+${PKColumnName_Lower}	主键字段小写,例如：id，暂时不支持联合主键
+${PKColumnName_Camel}	主键字段Camel风格,例如：id，暂时不支持联合主键
+${PKColumnName_Pascal}	主键字段Pascal风格,例如：id，暂时不支持联合主键
+${PKColumnType}	主键字段java类型，例如：String，暂时不支持联合主键
+${PKColumn_JdbcType}	主键字段jdbc类型，例如：DECIMAL，暂时不支持联合主键
+
+
+${BaseValidate} 基础验证，字段非空，超长等。
+${BaseValidateNotContainPKColumn} 基础验证,不包含主键字段，字段非空，超长等。
+
+//XXMapper.XML 中使用
+${BaseResultMap}
+${Base_Column_List}
+${insert}
+${insertSelective}
+${updateByPrimaryKey}
+${updateByPrimaryKeySelective}  
+
+
+
+
+
