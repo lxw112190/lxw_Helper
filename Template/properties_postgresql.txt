@@ -9,8 +9,8 @@ spring.http.encoding.charset=UTF-8
 
 sys.security.ser-key=test
 
-spring.datasource.driver-class-name= com.mysql.cj.jdbc.Driver
-spring.datasource.url = jdbc:mysql://${IP}:${Port}/${DataBase}?useUnicode=true&characterEncoding=utf8&useSSL=false&autoReconnect=true&serverTimezone=Asia/Shanghai
+spring.datasource.driverClassName=org.postgresql.Driver
+spring.datasource.url = jdbc:postgresql://${IP}:${Port}/${DataBase}
 spring.datasource.username=${UserName}
 spring.datasource.password=${Password}
 #spring.datasource.type=com.zaxxer.hikari.HikariDataSource
@@ -38,7 +38,7 @@ mybatis.typeAliasesPackage=${PackageName}.pojo
 
 #分页插件
 pagehelper:
-helperDialect: mysql
+helperDialect: postgresql
 reasonable: true
 supportMethodsArguments: true
 params: count=countSql

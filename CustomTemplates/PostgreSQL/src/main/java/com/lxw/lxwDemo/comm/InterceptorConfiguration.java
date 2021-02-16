@@ -1,0 +1,18 @@
+package ${PackageName}.comm;
+
+import org.springframework.boot.SpringBootConfiguration;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import javax.annotation.Resource;
+
+@SpringBootConfiguration
+public class InterceptorConfiguration implements WebMvcConfigurer {
+
+    @Resource
+    private SecurityAdapter securityAdapter;
+
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        //registry.addInterceptor(securityAdapter).addPathPatterns("/**");
+    }
+}

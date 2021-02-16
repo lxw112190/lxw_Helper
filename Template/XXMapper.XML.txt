@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="${PackageName}.mapper.${TableName_Pascal}Mapper">
-    <resultMap id="BaseResultMap" type="${PackageName}.pojo.${TableName_Pascal}">
+<mapper namespace="${PackageName}.mapper.${Table_Name_Pascal}Mapper">
+    <resultMap id="BaseResultMap" type="${PackageName}.pojo.${Table_Name_Pascal}">
 ${BaseResultMap}
     </resultMap>
     
@@ -9,27 +9,27 @@ ${BaseResultMap}
 ${Base_Column_List}
     </sql>
     
-    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.${PKColumnType}">
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.${PKCol.Column_Name_Java_Type}">
         select
         <include refid="Base_Column_List"/>
-        from ${TableName}
-        where ${PKColumnName} = #{${PKColumnName_Camel},jdbcType=${PKColumn_JdbcType}} 
+        from ${Table_Name}
+        where ${PKCol.Column_Name} = #{${PKCol.Column_Name_Camel},jdbcType=${PKCol.Column_Name_Jdbc_Type}} 
     </select>
     
     <select id="getNextVal" resultType="java.lang.Long" useCache="false" flushCache="false">
-        select SEQ_${TableName}.nextval as id from dual
+        select SEQ_${Table_Name}.nextval as id from dual
     </select>
     
     <select id="selectAllByMap" resultMap="BaseResultMap" parameterType="java.util.Map">
         select
         <include refid="Base_Column_List"/>
-        from ${TableName}
+        from ${Table_Name}
     </select>
     
-    <delete id="deleteByPrimaryKey" parameterType="java.lang.${PKColumnType}">
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.${PKCol.Column_Name_Java_Type}">
         delete  
-        from  ${TableName}
-        where ${PKColumnName} = #{${PKColumnName_Camel},jdbcType=${PKColumn_JdbcType}} 
+        from  ${Table_Name}
+        where ${PKCol.Column_Name} = #{${PKCol.Column_Name_Camel},jdbcType=${PKCol.Column_Name_Jdbc_Type}} 
     </delete>
     
 ${insert}

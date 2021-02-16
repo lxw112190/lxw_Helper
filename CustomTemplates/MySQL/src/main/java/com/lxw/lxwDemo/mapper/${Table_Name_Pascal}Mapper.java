@@ -1,4 +1,4 @@
-﻿package ${PackageName}.mapper;
+package ${PackageName}.mapper;
 
 import ${PackageName}.pojo.${Table_Name_Pascal};
 

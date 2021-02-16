@@ -1,4 +1,4 @@
-﻿package ${PackageName}.service;
+package ${PackageName}.service;
 
 import ${PackageName}.pojo.${Table_Name_Pascal};
 import com.github.pagehelper.PageInfo;

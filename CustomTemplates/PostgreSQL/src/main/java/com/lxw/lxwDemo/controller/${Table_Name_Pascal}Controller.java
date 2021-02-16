@@ -1,4 +1,4 @@
-﻿package ${PackageName}.controller;
+package ${PackageName}.controller;
 
 import ${PackageName}.comm.Response;
 import ${PackageName}.pojo.${Table_Name_Pascal};

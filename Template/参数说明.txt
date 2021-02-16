@@ -1,5 +1,6 @@
 ﻿${Author}	作者，例如：lxw，可在代码生成界面动态配置
-${Date}	时间，例如：2021-01-26
+${Date}	日期，例如：2021-01-26
+${DateTime}	时间，例如：2021-01-26 12:00:00
 
 ${GroupId}	GroupId
 ${ArtifactId}	ArtifactId
@@ -15,19 +16,19 @@ ${PackageName} 包名，例如：com.lxw.lxwDemo，可在代码生成界面动�
 ${PrivateFields} 私有字段
 ${PublicAttributes} 公有属性
 
-${TableName}	表名称，例如：tb_test
-${TableName_Pascal}	表名称,Pascal风格，例如：TbTest
-${TableName_Pascal_FirstLetterToLower}	表名称Pascal风格首字母小写，例如：tbTest
+${Table_Name}	表名称，例如：tb_test
+${Table_Name_Pascal}	表名称,Pascal风格，例如：TbTest
+${Table_Name_Pascal_FirstLetterToLower}	表名称Pascal风格首字母小写，例如：tbTest
 
-${TableComment}	表注释，例如：测试表
+${Table_Comments}	表注释，例如：测试表
 
-${PKColumnName}	主键字段,例如：ID，暂时不支持联合主键
-${PKColumnName_Lower}	主键字段小写,例如：id，暂时不支持联合主键
-${PKColumnName_Camel}	主键字段Camel风格,例如：id，暂时不支持联合主键
-${PKColumnName_Pascal}	主键字段Pascal风格,例如：id，暂时不支持联合主键
-${PKColumnType}	主键字段java类型，例如：String，暂时不支持联合主键
-${PKColumn_JdbcType}	主键字段jdbc类型，例如：DECIMAL，暂时不支持联合主键
-
+${PKCol.Column_Name}	主键字段,例如：ID，暂时不支持联合主键
+${PKCol.Column_Name_Lower}	主键字段小写,例如：id，暂时不支持联合主键
+${PKCol.Column_Name_Upper}	主键字段大写,例如：ID，暂时不支持联合主键
+${PKCol.Column_Name_Camel}	主键字段Camel风格,例如：id，暂时不支持联合主键
+${PKCol.Column_Name_Pascal}	主键字段Pascal风格,例如：id，暂时不支持联合主键
+${PKCol.Column_Name_Java_Type}	主键字段java类型，例如：String，暂时不支持联合主键
+${PKCol.Column_Name_Jdbc_Type}	主键字段jdbc类型，例如：DECIMAL，暂时不支持联合主键
 
 ${BaseValidate} 基础验证，字段非空，超长等。
 ${BaseValidateNotContainPKColumn} 基础验证,不包含主键字段，字段非空，超长等。
@@ -39,6 +40,43 @@ ${insert}
 ${insertSelective}
 ${updateByPrimaryKey}
 ${updateByPrimaryKeySelective}  
+
+一个简单循环的例子 暂时不支持嵌套循环
+
+package ${PackageName}.pojo;
+
+import org.springframework.format.annotation.DateTimeFormat;
+import java.math.BigDecimal;
+import java.sql.Time;
+import java.sql.Timestamp;
+import java.util.Date;
+
+/**
+ * ${Table_Comments}
+ * ${Author}
+ * ${Date}
+ */
+public class ${TableName_Pascal} {
+
+<for-ltCols>
+    /**
+     * ${Col.Column_Comments}
+     */
+    private ${Col.Column_Name_Java_Type} ${Col.Column_Name_Camel};
+</for-ltCols>
+    
+<for-ltCols>
+    public ${Col.Column_Name_Java_Type} get${Col.Column_Name_Pascal}() {
+        return ${Col.Column_Name_Camel};
+    }
+ 
+    public void set${Col.Column_Name_Pascal}(${Col.Column_Name_Java_Type} ${Col.Column_Name_Camel}) {
+        this.${Col.Column_Name_Camel} = ${Col.Column_Name_Camel};
+    }
+</for-ltCols>
+
+}
+
 
 
 

@@ -1,4 +1,4 @@
-﻿package ${PackageName}.service.impl;
+package ${PackageName}.service.impl;
 
 import ${PackageName}.mapper.${Table_Name_Pascal}Mapper;
 import ${PackageName}.pojo.${Table_Name_Pascal};
